@@ -27,11 +27,12 @@ module.exports = function (RED) {
         try {
             var oldFile = path.join(process.cwd(), "JsonDB_" + n.collection + ".json");
             var stats = fs.statSync(oldFile);
-            try {
+            fs.mkdirSync(defaultPath);
+            /*try {
                 stats = fs.statSync(defaultPath);
             }catch(error) {
                 fs.mkdirSync(defaultPath);
-            }
+            }*/
             
             fs.renameSync(oldFile, collectionFilePath);
             this.log("Moved old file from '" + oldFile + "' to '" + collectionFilePath + '"');
