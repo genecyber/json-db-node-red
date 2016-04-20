@@ -21,6 +21,7 @@ module.exports = function (RED) {
     console.log("loaded path lib")
     var JsonDB = require("node-json-db");
     console.log("loaded node-json-db")
+    console.log("preparing to make defaultPath", Red.settings.userDir)
     var defaultPath = path.join(RED.settings.userDir, "JsonDB");
     console.log("made default path", defaultPath)
     function JsonDBCollection(n) {
