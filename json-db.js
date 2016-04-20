@@ -18,15 +18,20 @@ module.exports = function (RED) {
     "use strict";
     var fs = require("fs");
     var path = require("path");
+    console.log("loaded path lib")
     var JsonDB = require("node-json-db");
+    console.log("loaded node-json-db")
     var defaultPath = path.join(RED.settings.userDir, "JsonDB");
-
+    console.log("made default path", defaultPath)
     function JsonDBCollection(n) {
         RED.nodes.createNode(this, n);
         var collectionFilePath = path.join(defaultPath, n.collection + ".json");
+        console.log("made collection file path", collectionFilePath)
         try {
             var oldFile = path.join(process.cwd(), "JsonDB_" + n.collection + ".json");
+            console.log("made old file", oldFile)
             var stats = fs.statSync(oldFile);
+            console.log("stats")
             fs.mkdirSync(defaultPath);
             /*try {
                 stats = fs.statSync(defaultPath);
